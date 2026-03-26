@@ -1,78 +1,109 @@
 # 📊 E-Commerce Customer Churn & Revenue Risk Analysis
 
 ## 📌 Project Overview
-This project analyses customer churn behaviour in an e-commerce platform to identify key drivers of churn and estimate revenue impact.
+This project analyses customer churn behaviour in an e-commerce platform to identify key drivers of churn and quantify its impact on revenue.
 
-The goal is to answer:
-- Why customers churn
-- Which segments are high-risk
-- How churn affects revenue
-- What actions can reduce churn
+The objective is to:
+- Identify high-risk customer segments
+- Understand behavioural and transactional drivers of churn
+- Estimate revenue exposure due to churn
+- Recommend data-driven retention strategies
 
 ---
 
 ## 📂 Dataset
 - Source: Kaggle (E-commerce Customer Churn Dataset)
 - Total Records: 5,630 customers
-- Features include:
-  - Customer behaviour (tenure, app usage, orders)
-  - Demographics (gender, city tier)
-  - Transaction data (payment mode, order category)
-  - Feedback signals (complaints, satisfaction)
+
+### Key Features:
+- Customer behaviour (tenure, app usage, order activity)
+- Demographics (gender, city tier)
+- Transactions (payment method, product category)
+- Feedback signals (complaints, satisfaction)
 
 ---
 
-## 🛠️ Tools Used
+## 🛠️ Tools & Technologies
 
 | Stage | Tool |
 |------|------|
-| Data Cleaning & Feature Engineering | Python (Pandas) |
+| Data Cleaning & Feature Engineering | Python (Pandas, NumPy) |
+| Statistical Analysis | Statsmodels |
+| Survival Analysis | Lifelines |
 | Data Analysis & KPI Extraction | SQL (MySQL) |
 | Data Visualisation | Tableau |
-| Summary Reporting | Excel |
+| Reporting | Excel |
 
 ---
 
-## ⚙️ Key Steps Performed
+## ⚙️ Methodology
 
 ### 1. Data Cleaning (Python)
-- Handled missing values using median/mode
-- Removed inconsistencies and ensured data quality
-- Standardised categorical variables
+- Handled missing values using median/mode imputation
+- Validated dataset consistency and removed duplicates
+- Standardised categorical variables for accurate aggregation
+
+---
 
 ### 2. Feature Engineering
-- Created **ChurnFlag (1/0)**
-- Built **Tenure Groups (0–6, 7–12, 13–24, 24+)**
-- Developed **Engagement Score**
-- Created **Revenue Proxy**
-- Defined **Risk Segments**
+- Created **ChurnFlag (binary target variable)**
+- Segmented customers into **Tenure Groups (0–6, 7–12, 13–24, 24+ months)**
+- Built **Engagement Score** using behavioural metrics
+- Estimated **Revenue Proxy** using order and cashback data
+- Defined **Risk Segments** based on satisfaction, complaints, and tenure
 
 ---
 
 ### 3. SQL Analysis
-- Calculated:
+- Computed key KPIs:
   - Overall churn rate
   - Revenue at risk
-  - Segment-wise churn rates
-- Identified high-risk customer groups and behavioural patterns
+  - Segment-level churn rates
+- Identified high-risk customer groups across:
+  - Tenure
+  - Payment method
+  - Product category
+  - Complaint behaviour
 
 ---
 
-### 4. Tableau Dashboard
-Developed an interactive dashboard including:
+### 4. Statistical Validation
+- Performed **two-proportion Z-test** to validate churn differences
+- Confirmed complaint-driven churn is statistically significant (**p < 0.001**)
+- Strengthened analytical findings with hypothesis testing
 
-- KPI Cards:
+---
+
+### 5. Survival Analysis
+- Applied **Kaplan-Meier estimator** to model time-to-churn
+- Identified steep decline in retention within first **6–12 months**
+- Confirmed early-stage churn risk using time-based modelling
+
+---
+
+### 6. A/B Testing Simulation
+- Simulated retention intervention (Control vs Treatment groups)
+- Estimated **~3% absolute churn reduction (~18% relative improvement)**
+- Validated improvement using statistical testing (**p < 0.01**)
+
+---
+
+### 7. Tableau Dashboard
+Developed an interactive dashboard featuring:
+
+- **KPI Cards**
   - Total Customers
   - Churn Rate
   - Revenue at Risk
 
-- Visualisations:
+- **Visualisations**
   - Churn by Tenure
   - Churn by Payment Method
   - Churn by Product Category
-  - Impact of Complaints on Churn
+  - Complaint Impact on Churn
 
-[📊 View Dashboard](https://public.tableau.com/views/E-CommerceCustomerChurnRevenueRiskAnalysisDashboard/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+🔗 **Dashboard Link:**  
+https://public.tableau.com/views/E-CommerceCustomerChurnRevenueRiskAnalysisDashboard/Dashboard1
 
 ---
 
@@ -83,15 +114,15 @@ Developed an interactive dashboard including:
 
 ### 🔥 Major Drivers
 
-1. **New Customers (0–6 months)**
+1. **Early Tenure (0–6 months)**
    - Churn Rate: **32.4%**
-   - Indicates onboarding gaps
+   - Indicates onboarding and early engagement gaps
 
 2. **Customer Complaints**
    - Churn Rate: **31.7% vs 10.9%**
-   - Strongest predictor of churn
+   - Strongest statistically validated churn predictor
 
-3. **Payment Method**
+3. **Payment Behaviour**
    - COD: **~25% churn**
    - Credit Card: **~13% churn**
    - Prepaid users show higher retention
@@ -99,28 +130,30 @@ Developed an interactive dashboard including:
 4. **Product Category**
    - Mobile/Electronics: **~27% churn**
    - Grocery: **~4.9% churn**
-   - Repeat-use categories retain better
+   - Repeat-use categories retain customers better
 
 ---
 
 ## 💡 Business Recommendations
 
-- Improve onboarding experience for new users
-- Strengthen complaint resolution systems
-- Promote prepaid payment incentives (UPI, cards)
-- Increase engagement for low-activity customers
-- Target high-risk segments with retention campaigns
+- Improve onboarding experience for new customers
+- Strengthen complaint resolution and support systems
+- Promote prepaid payment methods through incentives
+- Increase engagement for low-activity users
+- Target high-risk segments with personalised retention strategies
 
 ---
 
 ## 🚀 Conclusion
 
-This project demonstrates how data analytics can:
-- Identify churn drivers
-- Quantify revenue impact
-- Support data-driven business decisions
+This project demonstrates an end-to-end analytics workflow combining:
+- Data cleaning and feature engineering
+- SQL-based business analysis
+- Statistical validation and survival modelling
+- Experimentation through A/B testing simulation
+- Dashboard-driven storytelling
 
 ---
 
 ## 👨‍💻 Author
-Ishan Kukreti
+**Ishan Kukreti**
